@@ -1,4 +1,4 @@
-# SQL-and-Advnace-SQL-
+# SQL-and-Advnace-SQL- MySQL Magic Ale Database
 Working on Triggers and Procedures
 
 Problem Domain The context of this Assignment is the same as for Assignment 2, namely the Magic Ale (MA). This has been reproduced as is in the Appendix for your convenience. A DDL script (A3createDB.sql) for creating the corresponding database, and a DML script (A3populateDB.sql) for populating this database with some sample data are being provided in the Assignment 3 folder.
