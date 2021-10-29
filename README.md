@@ -1,2 +1,14 @@
 # SQL-and-Advnace-SQL-
-Working on Triggers and Procedures 
+Working on Triggers and Procedures
+
+Problem Domain The context of this Assignment is the same as for Assignment 2, namely the Magic Ale (MA). This has been reproduced as is in the Appendix for your convenience. A DDL script (A3createDB.sql) for creating the corresponding database, and a DML script (A3populateDB.sql) for populating this database with some sample data are being provided in the Assignment 3 folder.
+
+Task 1  Create the tables in the Magic Ale database by running the DDL script provided in the 'Assignment 3' folder. Then insert some sample records into the tables by running the provided DML script. Verify that the tables are created and populated as intended.
+
+Task 2  The membership records in the Membership table can be updated using an UPDATE statement. Such a statement can update any non-PK column value including the membership levels, but the Magic Ale has certain rules about membership level upgrades:  Only those members with a non-expired membership can receive an upgrade.  Only the SILVER members can be upgraded to the GOLD level.  Only the GOLD members can be upgraded to the PLATINUM level.  There is no further upgrade for the PLATINUM members. You will write a BEFORE UPDATE trigger called CHECK_MEMBERSHIP_UPDATE which fires when a record is attempted to be updated in the Membership table. The trigger has to check the conditions above to make sure that they are satisfied by the update request. If the above conditions are satisfied, then the UPDATE statement is allowed to proceed. Otherwise, a meaningful message needs to be displayed to the user. Note that a membership level can also be downgraded in a similar fashion but you are not responsible for checking the downgrading rules.
+
+Task 3  In this task, you will write a procedure called BrandNameCampaign which takes a brand name as input and creates a new campaign with the top 5 most expensive products with that brand name. The campaign will have a 4 week duration and will start after exactly two weeks of its creation. For the campaign, the SILVER level members will receive a 10% discount, the GOLD level members 20% and the PLATINUM level members 30%. If there are five or fewer products with that brand name, all those products will be included in the campaign.
+
+Task 4  This task involves testing the code developed in Tasks 2 & 3.
+Part (a)  First you are required to test the programs you wrote against the sample data provided as part of Task 1 to see if they work. These data constitute a minimal test against a very small number of records and are unlikely to demonstrate the full functionality of your programs. 
+Part (b)  Next you carry out a more extensive test by testing the programs against a larger set of records that are designed by you to easily expose any flaws in your programs. You do that by deleting records, adding records, or modifying the records in other ways, and then calling different procedures and/or firing the trigger.
