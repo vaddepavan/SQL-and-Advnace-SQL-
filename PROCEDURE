@@ -1,0 +1,43 @@
+drop PROCEDURE IF EXISTS BrandNameCampaign;
+
+DELIMITER //
+
+CREATE PROCEDURE  BrandNameCampaign(
+IN    i_brand 					varchar(255),
+OUT   o_ProductID     			int,
+OUT   o_ProductType       		varchar (20),
+OUT   o_Price             		float,
+OUT   o_Brand             		varchar(255),
+OUT   o_CampaignStartDate   	date,
+OUT   o_CampaignNewStartDate   	date,
+OUT   o_Membershiplevel         varchar(20),
+OUT   o_Discount             	int
+)
+BEGIN
+SELECT
+Product.ProductID, Product.ProductType, Product.Price, Product.Brand,
+campaign.CampaignStartDate , DATE_ADD(campaign.CampaignStartDate,INTERVAL 4 WEEK) as CampaignNewStartDate ,
+DiscountDetails.MembershipLevel, DiscountDetails.Discount
+FROM Product
+JOIN DiscountDetails
+ON Product.ProductID=DiscountDetails.ProductID
+JOIN campaign
+ON Campaign.CampaignID=DiscountDetails.CampaignID
+where Product.Brand = i_brand
+ORDER BY Product.PRICE DESC
+LIMIT 5;
+END //
+
+DELIMITER ;
+
+CALL BrandNameCampaign(
+"Penfold",
+@o_ProductID,
+@o_ProductType,
+@o_Price,
+@o_Brand,
+@o_CampaignStartDate,
+@o_CampaignNewStartDate,
+@o_Membershiplevel,
+@o_Discount
+);
